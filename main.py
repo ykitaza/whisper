@@ -58,24 +58,3 @@ class Transcriber:
             end = segment["end"]
             text = segment["text"]
             print(f"Start: {start}, End: {end}, Text: {text}")
-
-
-
-
-if __name__== "main":
-    downloader = YoutubeDownloader("download")
-    converter = AudioConverter()
-    transcriber = Transcriber()
-
-    # 例として、一つのURLを使用します。
-    url = "https://www.youtube.com/watch?v=bTriopQ_bQA&ab_channel=%E3%82%8F%E3%81%A1%E3%82%87%E3%82%93%E3%81%AE%E3%82%86%E3%81%A3%E3%81%8F%E3%82%8AIT"
-
-    # YouTubeから音源をダウンロードします。
-    downloader.download(url)
-
-    # 音源をWAVに変換します。
-    converter.convert_to_wav("/content/download/【Excel】VBAでChatGPT(GPT-API)と連携する方法を割と詳しく解説.webm", "download/audio.wav")
-
-    # WAVファイルから文字起こしをします。
-    transcript = transcriber.transcribe("download/audio.wav")
-    transcriber.print_result(transcript)
